@@ -1,0 +1,86 @@
+﻿@model IList<AspDotNetMvcCodeFirstProject.Models.Patient>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table table-striped">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Email Address</th>
+                <th>Cell Phone</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Image</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellPhoneNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.PatientImage)*@
+                    <img src="@Url.Content(item.PatientImage)" height="80" width="80"/>
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Patient", new {id=item.PatientID})" class="editDialog">
+                        <i class="fa fa-pencil-square-o"></i>Edit
+                    </a>
+                </td>
+                <td>
+                    @Ajax.ActionLink("Delete", "Delete", "Patient", new { @id = item.PatientID }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "div-record" }, new { @class = "fa fa-trash-o" })
+                </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#Add").click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $(".divForAdd").html(response);
+            });
+
+            $("#Add-Modal").modal({
+                backdrop: "static",
+            }, 'show');
+        });
+
+        $(".editDialog").click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $(".divForUpdate").html(response);
+            });
+
+            $("#Edit-Modal").modal({
+                backdrop: "static",
+            }, 'show');
+        })
+    })
+</script>

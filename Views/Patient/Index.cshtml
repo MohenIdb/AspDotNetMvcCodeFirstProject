@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<div class="text-center">
+    ViewModel+AJAX+Partial View with Image, Boolean, DateTime
+</div>
+
+<div id="main-div">
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+
+    <div class="container">
+        <a href="@Url.Action("Add", "Patient")" id="Add" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>Add Patient</a>
+        <div id="div-record">
+            @Html.Partial("_PatientDetail")
+        </div>
+    </div>
+
+    <div class="modal fade" id="Add-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New Patient</h4>
+                </div>
+                <div class="divForAdd">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Edit-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Update Patient</h4>
+                </div>
+                <div class="divForUpdate">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

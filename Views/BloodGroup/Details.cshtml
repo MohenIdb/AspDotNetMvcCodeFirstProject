@@ -1,0 +1,27 @@
+﻿@*@model AspDotNetMvcCodeFirstProject.Models.BloodGroup*@
+@model AspDotNetMvcCodeFirstProject.ViewModel.BloodGroupVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BloodGroup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BloodGroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BloodGroupName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BloodGroupID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
